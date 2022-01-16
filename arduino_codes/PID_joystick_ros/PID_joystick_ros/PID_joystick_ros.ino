@@ -8,31 +8,35 @@
 #define Lenc 3 
 #define Rpwm 6
 #define Lpwm 5
+ 
+#define Rdir 7
+#define Ldir 8
 
 
 std_msgs:: Float64 rspeed_msg;
 std_msgs:: Float64 lspeed_msg;
-std_msgs:: Float64 setpoint_msg;
 std_msgs:: Float64 lpid_msg;
 std_msgs:: Float64 rpid_msg;
+std_msgs:: Float64 setpoint_msg;
+geometry_msgs:: Twist cmd;
 
-std_msgs:: Float64 effort_msg;
+bool dir = 0;
 
-int a=110;
-
-void callback (const std_msgs::Float64 &effort_msg)
+std_msgs::Float64 &effort_msg
+void callback (const geometry_msgs::Twist &cmd)
 {
-   a  = effort_msg.data;
+int s = cmd.linear.x;
+if (s>0)dir=0;
+else dir=1;
+setpoint = map(abs(s),0,0.7,0,140);
   
-
- 
   }
 
-ros:: Subscriber<std_msgs::Float64> get_sped("control_effort", &callback);
+ros:: Subscriber<std_msgs::Float64> get_cmd("cmd_vel", &callback);
 
 
 
-ros:: Publisher right_motor("/state", &rspeed_msg);
+ros:: Publisher right_motor("/motor_speeds/right_motor", &rspeed_msg);
 ros:: Publisher left_motor("/motor_speeds/left_motor",&lspeed_msg);
 ros::Publisher setpoint_pub("/setpoint",& setpoint_msg);
 
@@ -44,8 +48,9 @@ ros:: NodeHandle nd;
 
 
 volatile unsigned long Rcounter =0, Lcounter =0; int RRPM =0, LRPM =0;
-int dt = 100; double ppr = 3657; // 20 * 32  --> double  3657--> experiment 
-double setpoint, rinput, loutput, kp = 0.06, kd = 0, ki = 0.2; 
+int dt = 100; //double ppr = 3657; // 20 * 32  --> double  3657--> experiment 
+double ppr = 20*32;
+double setpoint, rinput, loutput, kp = 0.06, ki = 0.2,  kd = 0, 
 double routput, linput;
 unsigned long prev_time = millis();
 unsigned long new_time = millis();
@@ -95,28 +100,34 @@ nd.advertise(right_motor);
 nd.advertise(left_motor);
 
 nd.advertise(setpoint_pub);
- nd.subscribe(get_sped);
- 
+ nd.subscribe(get_cmd);
+
 
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
 
+
+  
+ if(dir)
+ {digitalWrite(Ldir,0); digitalWrite(Rdir,0);}
+ else {digitalWrite(Ldir,1); digitalWrite(Rdir,1);}
+ 
 new_time = millis();
 if (new_time-prev_time >= dt)
 {
   RRPM = Rcounter / ppr / (dt /1000.0) * 60.0;
   LRPM = Rcounter / ppr / (dt /1000.0) * 60.0;
 
-int speed_reading = analogRead(A5);
-setpoint = map(speed_reading,0,1023,0,320);
 
   rinput = RRPM; linput = LRPM;
 
+right_mtr_ctrl.Compute();
+ 
  left_mtr_ctrl.Compute();
  
-analogWrite(Rpwm,a);
+analogWrite(Rpwm,routput);
 analogWrite(Lpwm,loutput);
   /* Serial.print("setpoint is ");
      Serial.print(setpoint);
@@ -140,9 +151,6 @@ setpoint_pub.publish(&setpoint_msg);
 Lcounter =0;
 Rcounter = 0;
 
-
-  
-  
   
   }
 nd.spinOnce();
