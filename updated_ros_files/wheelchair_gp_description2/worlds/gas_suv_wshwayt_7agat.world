@@ -1,0 +1,1364 @@
+<sdf version='1.7'>
+  <world name='default'>
+    <light name='sun' type='directional'>
+      <cast_shadows>1</cast_shadows>
+      <pose>0 0 10 0 -0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+      <spot>
+        <inner_angle>0</inner_angle>
+        <outer_angle>0</outer_angle>
+        <falloff>0</falloff>
+      </spot>
+    </light>
+    <model name='ground_plane'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <surface>
+            <contact>
+              <collide_bitmask>65535</collide_bitmask>
+              <ode/>
+            </contact>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <gravity>0 0 -9.8</gravity>
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type='adiabatic'/>
+    <physics type='ode'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>1</shadows>
+    </scene>
+    <wind/>
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <latitude_deg>0</latitude_deg>
+      <longitude_deg>0</longitude_deg>
+      <elevation>0</elevation>
+      <heading_deg>0</heading_deg>
+    </spherical_coordinates>
+    <model name='wheelchair_gp_description2'>
+      <link name='base_link'>
+        <inertial>
+          <pose>-0.072308 -0.020674 0.229615 0 -0 0</pose>
+          <mass>217.651</mass>
+          <inertia>
+            <ixx>24.0157</ixx>
+            <ixy>0.0197322</ixy>
+            <ixz>4.68816</ixz>
+            <iyy>25.3537</iyy>
+            <iyz>0.20616</iyz>
+            <izz>7.72362</izz>
+          </inertia>
+        </inertial>
+        <collision name='base_link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/abdallah/catkin_ws/src/wheelchair_gp_description2/meshes/base_link.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='base_link_fixed_joint_lump__c_fl_link_collision_1'>
+          <pose>0.27689 0.30405 -0.27701 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/abdallah/catkin_ws/src/wheelchair_gp_description2/meshes/c_fl_link.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <collision name='base_link_fixed_joint_lump__c_fr_link_collision_2'>
+          <pose>0.28382 -0.32107 -0.27701 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/abdallah/catkin_ws/src/wheelchair_gp_description2/meshes/c_fr_link.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <collision name='base_link_fixed_joint_lump__c_rl_link_collision_3'>
+          <pose>-0.3413 0.30405 -0.27701 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/abdallah/catkin_ws/src/wheelchair_gp_description2/meshes/c_rl_link.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <collision name='base_link_fixed_joint_lump__c_rr_link_collision_4'>
+          <pose>-0.34822 -0.32107 -0.27701 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/abdallah/catkin_ws/src/wheelchair_gp_description2/meshes/c_rr_link.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <collision name='base_link_fixed_joint_lump__chair_link_collision_5'>
+          <pose>0.085065 -0.021973 -0.21301 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/abdallah/catkin_ws/src/wheelchair_gp_description2/meshes/chair_link.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='base_link_fixed_joint_lump__laser_link_collision_6'>
+          <pose>-0.289705 -0.021973 1.41199 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/abdallah/catkin_ws/src/wheelchair_gp_description2/meshes/laser_link.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='base_link_fixed_joint_lump__imu_link_collision_7'>
+          <pose>0.1569 0.073915 0.13699 1.5708 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/abdallah/catkin_ws/src/wheelchair_gp_description2/meshes/imu_link.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='base_link_fixed_joint_lump__sonar1_link_collision_8'>
+          <pose>0.2097 -0.27197 0.021202 1.5708 -0 -0.5</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/abdallah/catkin_ws/src/wheelchair_gp_description2/meshes/sonar1_link.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='base_link_fixed_joint_lump__sonar2_link_collision_9'>
+          <pose>0.2037 -0.21461 -0.008798 1.5708 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/abdallah/catkin_ws/src/wheelchair_gp_description2/meshes/sonar2_link.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='base_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/abdallah/catkin_ws/src/wheelchair_gp_description2/meshes/base_link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Silver</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='base_link_fixed_joint_lump__c_fl_link_visual_1'>
+          <pose>0.27689 0.30405 -0.27701 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/abdallah/catkin_ws/src/wheelchair_gp_description2/meshes/c_fl_link.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='base_link_fixed_joint_lump__c_fr_link_visual_2'>
+          <pose>0.28382 -0.32107 -0.27701 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/abdallah/catkin_ws/src/wheelchair_gp_description2/meshes/c_fr_link.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='base_link_fixed_joint_lump__c_rl_link_visual_3'>
+          <pose>-0.3413 0.30405 -0.27701 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/abdallah/catkin_ws/src/wheelchair_gp_description2/meshes/c_rl_link.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='base_link_fixed_joint_lump__c_rr_link_visual_4'>
+          <pose>-0.34822 -0.32107 -0.27701 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/abdallah/catkin_ws/src/wheelchair_gp_description2/meshes/c_rr_link.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='base_link_fixed_joint_lump__chair_link_visual_5'>
+          <pose>0.085065 -0.021973 -0.21301 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/abdallah/catkin_ws/src/wheelchair_gp_description2/meshes/chair_link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Red</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='base_link_fixed_joint_lump__laser_link_visual_6'>
+          <pose>-0.289705 -0.021973 1.41199 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/abdallah/catkin_ws/src/wheelchair_gp_description2/meshes/laser_link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Green</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='base_link_fixed_joint_lump__imu_link_visual_7'>
+          <pose>0.1569 0.073915 0.13699 1.5708 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/abdallah/catkin_ws/src/wheelchair_gp_description2/meshes/imu_link.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='base_link_fixed_joint_lump__sonar1_link_visual_8'>
+          <pose>0.2097 -0.27197 0.021202 1.5708 -0 -0.5</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/abdallah/catkin_ws/src/wheelchair_gp_description2/meshes/sonar1_link.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='base_link_fixed_joint_lump__sonar2_link_visual_9'>
+          <pose>0.2037 -0.21461 -0.008798 1.5708 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/abdallah/catkin_ws/src/wheelchair_gp_description2/meshes/sonar2_link.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <sensor name='head_hokuyo_sensor' type='ray'>
+          <visualize>1</visualize>
+          <update_rate>40</update_rate>
+          <ray>
+            <scan>
+              <horizontal>
+                <samples>1024</samples>
+                <resolution>1</resolution>
+                <min_angle>-3.14</min_angle>
+                <max_angle>3.14</max_angle>
+              </horizontal>
+              <vertical>
+                <samples>1</samples>
+                <min_angle>0</min_angle>
+                <max_angle>0</max_angle>
+              </vertical>
+            </scan>
+            <range>
+              <min>0.1</min>
+              <max>30</max>
+              <resolution>0.01</resolution>
+            </range>
+            <noise>
+              <type>gaussian</type>
+              <mean>0</mean>
+              <stddev>0.01</stddev>
+            </noise>
+          </ray>
+          <plugin name='gazebo_ros_head_hokuyo_controller' filename='libgazebo_ros_laser.so'>
+            <topicName>/scan</topicName>
+            <frameName>laser_link</frameName>
+            <robotNamespace>/</robotNamespace>
+          </plugin>
+          <pose>-0.289705 -0.021973 1.41199 0 -0 0</pose>
+        </sensor>
+        <gravity>1</gravity>
+        <sensor name='imu_sensor' type='imu'>
+          <always_on>1</always_on>
+          <update_rate>100</update_rate>
+          <visualize>1</visualize>
+          <topic>__default_topic__</topic>
+          <plugin name='imu_plugin' filename='libgazebo_ros_imu_sensor.so'>
+            <topicName>imu</topicName>
+            <bodyName>imu_link</bodyName>
+            <updateRateHZ>10.0</updateRateHZ>
+            <gaussianNoise>0.0</gaussianNoise>
+            <xyzOffset>0 0 0</xyzOffset>
+            <rpyOffset>0 0 0</rpyOffset>
+            <frameName>imu_link</frameName>
+            <initialOrientationAsReference>0</initialOrientationAsReference>
+            <robotNamespace>/</robotNamespace>
+          </plugin>
+          <pose>0.1569 0.073915 0.13699 1.5708 -0 0</pose>
+          <imu/>
+        </sensor>
+        <sensor name='ultrasonic_1' type='ray'>
+          <visualize>1</visualize>
+          <update_rate>50</update_rate>
+          <ray>
+            <scan>
+              <horizontal>
+                <samples>10</samples>
+                <resolution>1</resolution>
+                <min_angle>-0.14835</min_angle>
+                <max_angle>0.14835</max_angle>
+              </horizontal>
+              <vertical>
+                <samples>10</samples>
+                <resolution>1</resolution>
+                <min_angle>-0.14835</min_angle>
+                <max_angle>0.14835</max_angle>
+              </vertical>
+            </scan>
+            <range>
+              <min>0.01</min>
+              <max>4</max>
+              <resolution>0.02</resolution>
+            </range>
+          </ray>
+          <plugin name='gazebo_ros_range' filename='libgazebo_ros_range.so'>
+            <gaussianNoise>0.005</gaussianNoise>
+            <alwaysOn>1</alwaysOn>
+            <updateRate>50</updateRate>
+            <topicName>sonars/sonar1</topicName>
+            <frameName>sonar1_link</frameName>
+            <radiation>ULTRASOUND</radiation>
+            <fov>0.2967</fov>
+            <robotNamespace>/</robotNamespace>
+          </plugin>
+          <pose>0.2097 -0.27197 0.021202 1.5708 -0 -0.5</pose>
+        </sensor>
+        <sensor name='ultrasonic_2' type='ray'>
+          <visualize>1</visualize>
+          <update_rate>50</update_rate>
+          <ray>
+            <scan>
+              <horizontal>
+                <samples>10</samples>
+                <resolution>1</resolution>
+                <min_angle>-0.14835</min_angle>
+                <max_angle>0.14835</max_angle>
+              </horizontal>
+              <vertical>
+                <samples>10</samples>
+                <resolution>1</resolution>
+                <min_angle>-0.14835</min_angle>
+                <max_angle>0.14835</max_angle>
+              </vertical>
+            </scan>
+            <range>
+              <min>0.01</min>
+              <max>4</max>
+              <resolution>0.02</resolution>
+            </range>
+          </ray>
+          <plugin name='gazebo_ros_range' filename='libgazebo_ros_range.so'>
+            <gaussianNoise>0.005</gaussianNoise>
+            <alwaysOn>1</alwaysOn>
+            <updateRate>50</updateRate>
+            <topicName>sonars/sonar2</topicName>
+            <frameName>sonar2_link</frameName>
+            <radiation>ULTRASOUND</radiation>
+            <fov>0.2967</fov>
+            <robotNamespace>/</robotNamespace>
+          </plugin>
+          <pose>0.2037 -0.21461 -0.008798 1.5708 -0 0</pose>
+        </sensor>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='wheel_fl_joint' type='revolute'>
+        <pose relative_to='base_link'>0.272429 0.330961 -0.26806 0 -0 0</pose>
+        <parent>base_link</parent>
+        <child>wheel_fl_link</child>
+        <axis>
+          <xyz>0 -1 0</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <damping>0</damping>
+            <friction>0.01</friction>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='wheel_fl_link'>
+        <pose relative_to='wheel_fl_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0.004461 0.033089 -0.00895 0 -0 0</pose>
+          <mass>1.65462</mass>
+          <inertia>
+            <ixx>0.00469812</ixx>
+            <ixy>-3.28554e-10</ixy>
+            <ixz>1.63655e-18</ixz>
+            <iyy>0.00853457</iyy>
+            <iyz>-3.34543e-11</iyz>
+            <izz>0.00469812</izz>
+          </inertia>
+        </inertial>
+        <collision name='wheel_fl_link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/abdallah/catkin_ws/src/wheelchair_gp_description2/meshes/wheel_fl_link.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='wheel_fl_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/abdallah/catkin_ws/src/wheelchair_gp_description2/meshes/wheel_fl_link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Blue</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='wheel_fr_joint' type='revolute'>
+        <pose relative_to='base_link'>0.28382 -0.33107 -0.27701 0 -0 0</pose>
+        <parent>base_link</parent>
+        <child>wheel_fr_link</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <damping>0</damping>
+            <friction>0.01</friction>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='wheel_fr_link'>
+        <pose relative_to='wheel_fr_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 -0.05 0 0 -0 0</pose>
+          <mass>1.65462</mass>
+          <inertia>
+            <ixx>0.00469812</ixx>
+            <ixy>-6.92223e-11</ixy>
+            <ixz>3.44437e-19</ixz>
+            <iyy>0.00853457</iyy>
+            <iyz>-3.22916e-10</iyz>
+            <izz>0.00469812</izz>
+          </inertia>
+        </inertial>
+        <collision name='wheel_fr_link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/abdallah/catkin_ws/src/wheelchair_gp_description2/meshes/wheel_fr_link.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='wheel_fr_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/abdallah/catkin_ws/src/wheelchair_gp_description2/meshes/wheel_fr_link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Blue</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='wheel_rl_joint' type='revolute'>
+        <pose relative_to='base_link'>-0.350396 0.330961 -0.272856 0 -0 0</pose>
+        <parent>base_link</parent>
+        <child>wheel_rl_link</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <damping>0</damping>
+            <friction>0.01</friction>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='wheel_rl_link'>
+        <pose relative_to='wheel_rl_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>-0.021946 0.063974 -0.004154 0 -0 0</pose>
+          <mass>1.65462</mass>
+          <inertia>
+            <ixx>0.00469812</ixx>
+            <ixy>-1.37194e-10</ixy>
+            <ixz>-1.71973e-19</ixz>
+            <iyy>0.00853457</iyy>
+            <iyz>-3.00407e-10</iyz>
+            <izz>0.00469812</izz>
+          </inertia>
+        </inertial>
+        <collision name='wheel_rl_link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/abdallah/catkin_ws/src/wheelchair_gp_description2/meshes/wheel_rl_link.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='wheel_rl_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/abdallah/catkin_ws/src/wheelchair_gp_description2/meshes/wheel_rl_link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Blue</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='wheel_rr_joint' type='revolute'>
+        <pose relative_to='base_link'>-0.353285 -0.347981 -0.285632 0 -0 0</pose>
+        <parent>base_link</parent>
+        <child>wheel_rr_link</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <damping>0</damping>
+            <friction>0.01</friction>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='wheel_rr_link'>
+        <pose relative_to='wheel_rr_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>-0.040119 -0.078273 0.008622 0 -0 0</pose>
+          <mass>1.65462</mass>
+          <inertia>
+            <ixx>0.00469812</ixx>
+            <ixy>3.0987e-10</ixy>
+            <ixz>2.1947e-19</ixz>
+            <iyy>0.00853457</iyy>
+            <iyz>-1.14225e-10</iyz>
+            <izz>0.00469812</izz>
+          </inertia>
+        </inertial>
+        <collision name='wheel_rr_link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/abdallah/catkin_ws/src/wheelchair_gp_description2/meshes/wheel_rr_link.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='wheel_rr_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/abdallah/catkin_ws/src/wheelchair_gp_description2/meshes/wheel_rr_link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Blue</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='left_wheel_joint' type='revolute'>
+        <pose relative_to='base_link'>-0.0732 0.27496 -0.17701 0 -0 0</pose>
+        <parent>base_link</parent>
+        <child>left_wheel_link</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <damping>0</damping>
+            <friction>0.2</friction>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='left_wheel_link'>
+        <pose relative_to='left_wheel_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0.000196 0.03 -7e-05 0 -0 0</pose>
+          <mass>3.63793</mass>
+          <inertia>
+            <ixx>0.0501416</ixx>
+            <ixy>-4.04452e-18</ixy>
+            <ixz>-9.11183e-07</ixz>
+            <iyy>0.0986432</iyy>
+            <iyz>1.94384e-16</iyz>
+            <izz>0.0501394</izz>
+          </inertia>
+        </inertial>
+        <collision name='left_wheel_link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/abdallah/catkin_ws/src/wheelchair_gp_description2/meshes/left_wheel_link.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='left_wheel_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/abdallah/catkin_ws/src/wheelchair_gp_description2/meshes/left_wheel_link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Black</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='right_wheel_joint' type='revolute'>
+        <pose relative_to='base_link'>-0.078237 -0.291973 -0.168374 0 -0 0</pose>
+        <parent>base_link</parent>
+        <child>right_wheel_link</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <damping>0</damping>
+            <friction>0.2</friction>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='right_wheel_link'>
+        <pose relative_to='right_wheel_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0.005102 -0.03 -0.008837 0 -0 0</pose>
+          <mass>3.63793</mass>
+          <inertia>
+            <ixx>0.0501394</ixx>
+            <ixy>-1.08357e-19</ixy>
+            <ixz>-8.37249e-07</ixz>
+            <iyy>0.0986432</iyy>
+            <iyz>1.67437e-16</iyz>
+            <izz>0.0501417</izz>
+          </inertia>
+        </inertial>
+        <collision name='right_wheel_link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/abdallah/catkin_ws/src/wheelchair_gp_description2/meshes/right_wheel_link.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='right_wheel_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/abdallah/catkin_ws/src/wheelchair_gp_description2/meshes/right_wheel_link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Black</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <static>0</static>
+      <plugin name='differential_drive_controller' filename='libgazebo_ros_diff_drive.so'>
+        <alwaysOn>1</alwaysOn>
+        <legacyMode>0</legacyMode>
+        <updateRate>40</updateRate>
+        <leftJoint>left_wheel_joint</leftJoint>
+        <rightJoint>right_wheel_joint</rightJoint>
+        <wheelSeparation>0.6</wheelSeparation>
+        <wheelDiameter>0.3</wheelDiameter>
+        <torque>250</torque>
+        <wheelTorque>250</wheelTorque>
+        <commandTopic>cmd_vel</commandTopic>
+        <odometryTopic>odom</odometryTopic>
+        <odometryFrame>odom</odometryFrame>
+        <robotBaseFrame>base_link</robotBaseFrame>
+        <robotNamespace>/</robotNamespace>
+      </plugin>
+      <pose>0 0 0.376879 0 -0 0</pose>
+    </model>
+    <model name='ambulance'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <scale>0.0254 0.0254 0.0254</scale>
+              <uri>model://ambulance/meshes/ambulance.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <scale>0.0254 0.0254 0.0254</scale>
+              <uri>model://ambulance/meshes/ambulance.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>0.380198 5.91612 0 0 -0 0</pose>
+    </model>
+    <model name='suv'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <pose>0 0 0 0 0 -1.5708</pose>
+          <geometry>
+            <mesh>
+              <scale>0.06 0.06 0.06</scale>
+              <uri>model://suv/meshes/suv.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <pose>0 0 0 0 0 -1.5708</pose>
+          <geometry>
+            <mesh>
+              <scale>0.06 0.06 0.06</scale>
+              <uri>model://suv/meshes/suv.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>6.83059 -1.35712 0 0 -0 0</pose>
+    </model>
+    <model name='Dumpster'>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <scale>1.5 1.5 1.5</scale>
+              <uri>model://dumpster/meshes/dumpster.dae</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <scale>1.5 1.5 1.5</scale>
+              <uri>model://dumpster/meshes/dumpster.dae</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://dumpster/materials/scripts</uri>
+              <uri>model://dumpster/materials/textures</uri>
+              <name>Dumpster/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>2.75316 -2.09659 0 0 -0 0</pose>
+    </model>
+    <model name='Gas Station'>
+      <static>1</static>
+      <link name='link'>
+        <pose>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>model://gas_station/meshes/gas_station.dae</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>model://gas_station/meshes/gas_station.dae</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://gas_station/materials/scripts</uri>
+              <uri>model://gas_station/materials/textures</uri>
+              <name>GasStation/Diffuse</name>
+            </script>
+            <shader type='normal_map_tangent_space'>
+              <normal_map>GasStation_Normal.png</normal_map>
+            </shader>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>-5.21192 18.0593 0 0 -0 0</pose>
+    </model>
+    <model name='suv_0'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <pose>0 0 0 0 0 -1.5708</pose>
+          <geometry>
+            <mesh>
+              <scale>0.06 0.06 0.06</scale>
+              <uri>model://suv/meshes/suv.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <pose>0 0 0 0 0 -1.5708</pose>
+          <geometry>
+            <mesh>
+              <scale>0.06 0.06 0.06</scale>
+              <uri>model://suv/meshes/suv.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>-3.3737 -6.17359 0 0 -0 0</pose>
+    </model>
+    <state world_name='default'>
+      <sim_time>228 405000000</sim_time>
+      <real_time>1726 737057161</real_time>
+      <wall_time>1655149882 671600399</wall_time>
+      <iterations>228405</iterations>
+      <model name='Dumpster'>
+        <pose>7.57718 -1.40542 0.001377 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>7.57718 -1.40542 0.001377 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0.006801 5e-06 -4.93018 -0.000368 -1.35607 -9e-06</acceleration>
+          <wrench>0.006801 5e-06 -4.93018 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='Gas Station'>
+        <pose>-5.21192 18.0593 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>-5.21192 18.0593 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='ambulance'>
+        <pose>0.380198 5.91612 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>0.380198 5.91612 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='ground_plane'>
+        <pose>0 0 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>0 0 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='suv'>
+        <pose>8.55167 3.56168 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>8.55167 3.56168 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='suv_0'>
+        <pose>-0.861091 -3.41292 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>-0.861091 -3.41292 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='wheelchair_gp_description2'>
+        <pose>7.09898 9.81601 0.377639 -0.001311 -0.00335 -2.34014</pose>
+        <scale>1 1 1</scale>
+        <link name='base_link'>
+          <pose>7.09898 9.81601 0.377639 -0.001311 -0.00335 -2.34014</pose>
+          <velocity>-0.000854 -0.000207 -0.004887 3.5e-05 -3e-05 0.000579</velocity>
+          <acceleration>0.025682 0.00304 -9.77196 0.014193 -0.092485 -0.095741</acceleration>
+          <wrench>5.58975 0.661571 -2126.88 0 -0 0</wrench>
+        </link>
+        <link name='left_wheel_link'>
+          <pose>7.34684 9.67705 0.200027 -0.002005 -0.863389 -2.33862</pose>
+          <velocity>-0.000985 -6.8e-05 -0.005664 0.001394 0.001374 0.000614</velocity>
+          <acceleration>-0.394014 -0.017246 -11.4428 2.97629 0.257361 -0.015979</acceleration>
+          <wrench>-1.4334 -0.06274 -41.6281 0 -0 0</wrench>
+        </link>
+        <link name='right_wheel_link'>
+          <pose>6.94311 10.0751 0.209392 -0.001326 0.190929 -2.3404</pose>
+          <velocity>-0.001239 -0.000401 -0.006176 0.001518 0.001502 0.000508</velocity>
+          <acceleration>-0.454251 -0.169253 -12.2276 -0.136073 1.2234 2.91395</acceleration>
+          <wrench>-1.65253 -0.615732 -44.483 0 -0 0</wrench>
+        </link>
+        <link name='wheel_fl_link'>
+          <pose>7.14633 9.38967 0.110055 -0.001453 0.458951 -2.34079</pose>
+          <velocity>-0.000664 -0.000105 -0.003807 0.004067 -0.001147 0.00053</velocity>
+          <acceleration>-0.149409 0.172291 -7.74002 2.97522 -0.603482 -0.173433</acceleration>
+          <wrench>-0.247215 0.285076 -12.8068 0 -0 0</wrench>
+        </link>
+        <link name='wheel_fr_link'>
+          <pose>6.6628 9.84203 0.102015 -0.001417 0.388712 -2.34068</pose>
+          <velocity>-0.000861 -0.00044 -0.00489 -3.8e-05 -0.000106 0.000653</velocity>
+          <acceleration>0.057323 0.08537 -9.8048 -0.161145 -0.372006 0.063395</acceleration>
+          <wrench>0.094848 0.141255 -16.2232 0 -0 0</wrench>
+        </link>
+        <link name='wheel_rl_link'>
+          <pose>7.57959 9.83708 0.103172 -0.001289 0.048019 -2.34021</pose>
+          <velocity>-0.001094 6.3e-05 -0.003687 0.002207 0.005914 -0.00015</velocity>
+          <acceleration>-0.494884 -0.127185 -8.22714 1.84207 -0.866268 -1.54971</acceleration>
+          <wrench>-0.818846 -0.210443 -13.6128 0 -0 0</wrench>
+        </link>
+        <link name='wheel_rr_link'>
+          <pose>7.09384 10.3115 0.091278 -0.001293 0.000306 -2.34014</pose>
+          <velocity>-0.001899 -0.000353 -0.004161 -0.001691 0.007734 -0.001621</velocity>
+          <acceleration>-0.926257 -0.120262 -8.16709 0.665697 1.15854 -1.35811</acceleration>
+          <wrench>-1.5326 -0.198988 -13.5134 0 -0 0</wrench>
+        </link>
+      </model>
+      <light name='sun'>
+        <pose>0 0 10 0 -0 0</pose>
+      </light>
+    </state>
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose>15.9061 10.971 6.77715 0 0.403643 -2.73899</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+  </world>
+</sdf>

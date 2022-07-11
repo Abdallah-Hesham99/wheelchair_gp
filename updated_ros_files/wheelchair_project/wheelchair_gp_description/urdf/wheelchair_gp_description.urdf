@@ -4,12 +4,24 @@
      For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
 <robot
   name="wheelchair_gp_description">
+  <origin xyz="0 0 0.37687875"
+        rpy="0 0 0" />
   <link
     name="base_link">
     <inertial>
-      <origin
+      <!--origin
         xyz="-0.0393981982931111 -0.0192942548126665 -0.039140937433326"
+        rpy="0 0 0" /-->
+      
+      
+      <origin
+        xyz="-0.0393981982931111 -0.0192942548126665 0.37687875"
         rpy="0 0 0" />
+      <!--origin
+        xyz="0.126687 -0.135590 0.376875"
+        rpy="-0.000617 0.000934 -0.165792" /-->
+      
+      
       <mass
         value="102.779125185667" />
       <inertia

@@ -17,4 +17,13 @@
     pkg="rviz"
     type="rviz"
     args="-d $(find wheelchair_gp_description)/urdf.rviz" />
+    
+    
+    
+    
+   <node 
+     name = "map_to_odom"
+     pkg = "tf"
+     type ="static_transform_publisher"
+     args = " 0 0 0 0 0 0 map odom 1000"/>
 </launch>

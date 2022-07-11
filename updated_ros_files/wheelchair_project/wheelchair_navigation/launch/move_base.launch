@@ -2,10 +2,10 @@
 
    <master auto="start"/>
  <!-- Run the map server --> 
-    <!--node name="map_server" pkg="map_server" type="map_server" args="$(find turtlebot3_navigation)/maps/map.yaml"/-->
+    <!--node name="map_server" pkg="map_server" type="map_server" args="$(find my_map_package)/my_map.pgm my_map_resolution"/-->
 
  <!--- Run AMCL --> 
-    <include file="$(find amcl)/examples/amcl_omni.launch" />
+    <include file="$(find amcl)/examples/amcl_diff.launch" />
 
    <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
     <rosparam file="$(find wheelchair_navigation)/param/costmap_common_params.yaml" command="load" ns="global_costmap" /> 
@@ -13,6 +13,7 @@
     <rosparam file="$(find wheelchair_navigation)/param/local_costmap_params.yaml" command="load" />
     <rosparam file="$(find wheelchair_navigation)/param/global_costmap_params.yaml" command="load" /> 
     <rosparam file="$(find wheelchair_navigation)/param/base_local_planner_params.yaml" command="load" />
+    <rosparam file="$(find wheelchair_navigation)/param/base_global_planner_params.yaml" command="load" />
  </node>
-<!--node pkg="tf" type="static_transform_publisher" name="tf_pubbb" args="0 0 0 0 0 0 map base_link 100"/-->
+
 </launch> 

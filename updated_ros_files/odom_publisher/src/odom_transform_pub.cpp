@@ -8,10 +8,11 @@
 #include<ros/console.h>
 
 #include <nav_msgs/Odometry.h>
+//#include <std_msgs/Int16.h>
 #include <std_msgs/Int16.h>
 #include <geometry_msgs/Twist.h>
 #include <math.h>
-unsigned int right_ticks_diff=0, left_ticks_diff=0;
+ double right_ticks_diff=0, left_ticks_diff=0;
 long ppr = 20*32; 
 double wheel_diameter=0.3;
 double center_dist = 0.61;
@@ -31,12 +32,14 @@ void get_right_wheel_ticks(const std_msgs::Int16 right_ticks_msg)
 {
 right_ticks_diff = right_ticks_msg.data;
 ROS_DEBUG("i RECIEVED RIGHT");
+
 }
 
 void get_left_wheel_ticks(const std_msgs::Int16 left_ticks_msg)
 {
 ROS_DEBUG("i RECIEVED LEFT");
 left_ticks_diff = left_ticks_msg.data;
+
 
 }
 
@@ -51,6 +54,26 @@ tf2::Quaternion odom_quat;
 	double new_time = ros::Time::now().toSec(); 
 	ros::Time cur_time;
 	cur_time =ros::Time::now();
+	
+	std::cout<<" right_diff "<<right_ticks_diff<<" left tick diff "<<left_ticks_diff<<"\n";
+	
+	
+	/*if (right_ticks_diff>100000)
+{right_ticks_diff=(4294967296-right_ticks_diff);
+right_ticks_diff=0-right_ticks_diff;
+}
+	
+	
+	if (left_ticks_diff>100000)
+{left_ticks_diff=(4294967296-left_ticks_diff);
+left_ticks_diff=0-left_ticks_diff;
+}*/
+	
+	
+	
+	
+	
+	
 	double sr = distance_per_tick * right_ticks_diff ;
 	double sl = distance_per_tick * left_ticks_diff ;
 	double mean = (sl+sr)/2.0;

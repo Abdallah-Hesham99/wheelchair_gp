@@ -212,3 +212,25 @@ include_directories(
 add_executable(odom_transform_pub src/odom_transform_pub.cpp)
 target_link_libraries(odom_transform_pub ${catkin_LIBRARIES})
 catkin_package()
+
+
+add_executable(scan_filter src/scan_filter.cpp)
+target_link_libraries(scan_filter ${catkin_LIBRARIES})
+catkin_package()
+
+
+
+add_executable(odom_transform_pub_v2 src/odom_transform_pub_v2.cpp)
+target_link_libraries(odom_transform_pub_v2 ${catkin_LIBRARIES})
+catkin_package()
+
+
+
+add_executable(odom_transform_pub_v3 src/odom_transform_pub_v3.cpp)
+target_link_libraries(odom_transform_pub_v3 ${catkin_LIBRARIES})
+catkin_package()
+
+
+add_executable(odom_abs_transform src/odom_transform_pub_abs.cpp)
+target_link_libraries(odom_abs_transform ${catkin_LIBRARIES})
+catkin_package()
